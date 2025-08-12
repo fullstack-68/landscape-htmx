@@ -1,0 +1,4 @@
+div(id="todoform")
+    include ../components/inputForm.pug
+div(id="todolist" hx-get="/todolist" hx-trigger="refetchtodo from:body")
+    include ../components/todoList.pug

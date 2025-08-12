@@ -1,0 +1,9 @@
+for todo, idx in todos
+  - var fontWeight = curTodo.id === todo.id ? "700" : "400"
+  - var fontClass = curTodo.id === todo.id ? "pico-color-blue-400" : ""
+  article(class='grid' style="grid-template-columns: 0.5fr 4fr 1fr 1fr; align-items: center")
+    div=`(${idx + 1})`
+    div(style=`font-weight: ${fontWeight}` class=`${fontClass}`)=`✍️ ${todo.todoText}`
+    if mode === "ADD"
+      div(style="cursor: pointer" class="custom-btn" hx-post="/delete" hx-vals=`{"curId":"${todo.id}"}` hx-target="#wrapperFormList" hx-indicator="#spinner") 🗑️
+      div(style="cursor: pointer" class="custom-btn" hx-post="/edit" hx-vals=`{"curId":"${todo.id}"}` hx-target="#wrapperFormList" hx-indicator="#spinner") 🖊️

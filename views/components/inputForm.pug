@@ -1,0 +1,12 @@
+//- Main form
+- var gridTemplateColumns = mode === "ADD" ? "4fr 1fr" : "4fr 1fr 1fr"
+div(class="grid" style=`grid-template-columns: ${gridTemplateColumns}; align-items: start`)
+    form(hx-post=`${mode==="ADD"? "/create" : "/update"}` hx-target="#wrapperFormList" style="display: contents" hx-indicator="#spinner" hx-disabled-elt="find input[type='text'], find button")
+        input(type="text" name="todoText" value=curTodo.todoText)
+        input(type="hidden" name="curId" value=curTodo.id)
+        button(type="submit")=`${mode==="ADD"? "Submit" : "Update"}`
+        //- Cancel button
+        if mode==="EDIT"
+            button(class="contrast" hx-get="/cancel" hx-target="#wrapperFormList") Cancel
+if message
+    div(class="pico-color-red-400")=message

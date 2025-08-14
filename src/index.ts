@@ -5,7 +5,7 @@ import express from "express";
 import morgan from "morgan";
 import { getTodos, createTodos, deleteTodo, updateTodo } from "./db.js";
 
-const DB_LATENCY = 500; // ms
+const DB_LATENCY = 1000; // ms
 const APP_PORT = 3002;
 
 const debug = Debug("app");
